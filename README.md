@@ -40,13 +40,23 @@ Open http://localhost:3000 - you are redirected to `/en` or `/ja` based on your 
 
 ## Scripts
 
-| Command                | Description                                  |
-| ---------------------- | -------------------------------------------- |
-| `npm run dev`          | Dev server                                   |
-| `npm run build`        | Production build (stop the dev server first) |
-| `npm run start`        | Serve the production build                   |
-| `npm run lint`         | ESLint                                       |
-| `npm run format`       | Format all files with Prettier               |
-| `npm run format:check` | Check formatting                             |
+| Command                   | Description                                  |
+| ------------------------- | -------------------------------------------- |
+| `npm run dev`             | Dev server                                   |
+| `npm run build`           | Production build (stop the dev server first) |
+| `npm run start`           | Serve the production build                   |
+| `npm run lint`            | ESLint                                       |
+| `npm run format`          | Format all files with Prettier               |
+| `npm run format:check`    | Check formatting                             |
+| `npm run test:lint-rules` | Test the custom section-label lint rule      |
 
 Coding rules for this project (component structure, i18n, performance) are in `CLAUDE.md`.
+
+## Claude Code
+
+`.claude/settings.json` turns on two Claude Code plugins for everyone who opens this project:
+
+- `superpowers` - structured workflows (planning, debugging, checking work before calling it done)
+- `code-simplifier` - cleans up recently changed code for readability
+
+Claude Code asks to install them the first time you open a site made from this template. To turn one off for a site, set it to `false` in `.claude/settings.json`; to turn it off only for yourself, set it to `false` in `.claude/settings.local.json` (personal, not committed).

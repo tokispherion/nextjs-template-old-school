@@ -50,7 +50,7 @@ Bare Next.js (App Router) template for bilingual (English / Japanese) homepage a
 
 ## Component structure
 
-Every component follows this order, and each section starts with its category comment (`// imports`, `// types`, ...). Add a category comment for every section that has code; skip sections that are empty.
+Every component follows this order, and each section starts with its category comment (`// imports`, `// types`, ...). Add a category comment for every section that has code; skip sections that are empty. These category comments are required and must be kept during any simplification or refactoring, whether by a person or a tool. Remove a label only when its section no longer has any code, and add one when a section gains code. `npm run lint` checks this in `app/` and `components/` files: every grouped line must sit under its matching label (e.g. `useState` under `// states`), and labels must follow the order above. The same check covers components wrapped in `memo(...)` or other wrapper functions. It also rejects class components (use function components; `error.tsx` handles errors) and `forwardRef` (not needed in React 19: accept `ref` as a normal prop). The rule lives in `eslint/section-labels.mjs`; run `npm run test:lint-rules` after changing it.
 
 1. `// imports`
 2. `// types` - props and other types

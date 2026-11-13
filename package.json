@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:lint-rules": "node eslint/section-labels.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.72.0",
