@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  experimental: {
+    // Enables app/global-not-found.tsx (needed because the root layout is app/[lang])
+    globalNotFound: true,
+  },
   turbopack: {
     rules: {
       "*.css": {

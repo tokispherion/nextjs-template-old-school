@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js homepage template
 
-## Getting Started
+A bare, unstyled Next.js 16 template for fast bilingual (English / Japanese) homepage and marketing sites.
 
-First, run the development server:
+## Stack
+
+| Purpose      | Package                                   |
+| ------------ | ----------------------------------------- |
+| Framework    | Next.js 16 (App Router, Cache Components) |
+| Styling      | Tailwind CSS 4 (`@tailwindcss/turbopack`) |
+| Validation   | zod                                       |
+| Client state | zustand                                   |
+| Icons        | lucide-react                              |
+| Formatting   | Prettier + `prettier-plugin-tailwindcss`  |
+| Animations   | optional: `npm install gsap @gsap/react`  |
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 - you are redirected to `/en` or `/ja` based on your browser language.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## New site checklist
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Set `NEXT_PUBLIC_SITE_URL` in `.env.local` (and in the hosting provider's environment variables)
+2. Replace `siteName` and `description` in `dictionaries/en.json` and `dictionaries/ja.json`
+3. Replace the placeholder icon `app/icon.svg` (add `app/apple-icon.png` if needed)
+4. Change `defaultLocale` in `lib/i18n.ts` if the main audience is Japanese
+5. Update this README with the site's name and details
 
-## Learn More
+## Adding a page
 
-To learn more about Next.js, take a look at the following resources:
+1. Create `app/[lang]/<page>/page.tsx`
+2. Add its text to both dictionaries
+3. Export `generateMetadata` with `alternates: await getAlternates("/<page>")`
+4. Add `"/<page>"` to `PAGES` in `app/sitemap.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command                | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| `npm run dev`          | Dev server                                   |
+| `npm run build`        | Production build (stop the dev server first) |
+| `npm run start`        | Serve the production build                   |
+| `npm run lint`         | ESLint                                       |
+| `npm run format`       | Format all files with Prettier               |
+| `npm run format:check` | Check formatting                             |
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Coding rules for this project (component structure, i18n, performance) are in `CLAUDE.md`.

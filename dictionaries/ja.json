@@ -1,0 +1,10 @@
+{
+  "metadata": {
+    "siteName": "サイト名",
+    "description": "サイトの説明"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "backHome": "ホームに戻る"
+  }
+}
