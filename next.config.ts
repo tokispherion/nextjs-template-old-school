@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   experimental: {
-    // Enables app/global-not-found.tsx (needed because the root layout is app/[lang])
+    // Turns on the "page not found" screen for addresses that don't exist (app/global-not-found.tsx)
     globalNotFound: true,
   },
   turbopack: {

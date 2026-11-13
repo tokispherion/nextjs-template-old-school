@@ -29,8 +29,7 @@ Open http://localhost:3000 - you are redirected to `/en` or `/ja` based on your 
 1. Set `NEXT_PUBLIC_SITE_URL` in `.env.local` (and in the hosting provider's environment variables)
 2. Replace `siteName` and `description` in `dictionaries/en.json` and `dictionaries/ja.json`
 3. Replace the placeholder icon `app/icon.svg` (add `app/apple-icon.png` if needed)
-4. Change `defaultLocale` in `lib/i18n.ts` if the main audience is Japanese
-5. Update this README with the site's name and details
+4. Update this README with the site's name and details
 
 ## Adding a page
 

@@ -5,7 +5,7 @@ import { locales } from "@/lib/i18n";
 import { getDictionary, getLocale } from "@/lib/dictionaries";
 import "../globals.css";
 
-// Pre-builds every language at build time
+// Builds the English and Japanese pages ahead of time so they load instantly
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }

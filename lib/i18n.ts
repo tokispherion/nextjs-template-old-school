@@ -5,7 +5,7 @@ export type Locale = "en" | "ja";
 export const locales: readonly Locale[] = ["en", "ja"];
 export const defaultLocale: Locale = "en";
 
-// Client-safe error texts (error pages can't load server dictionaries)
+// Error page texts - kept here because error pages run in the browser and can't read the dictionaries
 export const errorMessages: Record<
   Locale,
   { title: string; retry: string; backHome: string }

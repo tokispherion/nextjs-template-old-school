@@ -46,7 +46,7 @@ Bare Next.js (App Router) template for bilingual (English / Japanese) homepage a
 - Internal links include the language: `<Link href={`/${locale}/about`}>`; linking to unprefixed URLs costs a redirect
 - Every page exports `generateMetadata` returning `alternates: await getAlternates("/about")` (canonical + hreflang), and its path is added to `PAGES` in `app/sitemap.ts`
 - Error page texts live in `errorMessages` in `lib/i18n.ts` (error pages are client components)
-- Default language is `en` (`defaultLocale` in `lib/i18n.ts`); visitors are redirected by their browser's `Accept-Language`
+- The default language is always `en` (`defaultLocale` in `lib/i18n.ts`); don't change it. Visitors are redirected by their browser language, and anyone whose browser is neither English nor Japanese gets English
 
 ## Component structure
 
@@ -150,6 +150,7 @@ Loading and rendering speed is the top priority.
 
 - Folder names are lowercase (kebab-case); Linux servers are case-sensitive
 - Comments are single-line only
+- Write comments in plain language that non-developers can understand: say what the code does for the site and why (e.g. `// Shows the page in the visitor's browser language`), not technical jargon (e.g. `// Negotiates locale from Accept-Language`); if a technical term is unavoidable, explain it in a few words
 - Keep the template minimal: don't add packages, styles or demo content unless asked
 - Import with the `@/` alias (e.g. `@/lib/env`)
 - New env vars go in `lib/env.ts` and `.env.example`; reference `NEXT_PUBLIC_*` vars as `process.env.NEXT_PUBLIC_X` explicitly so Next.js can inline them

@@ -25,7 +25,7 @@ export async function getDictionary(): Promise<Dictionary> {
   return dictionaries[await getLocale()]();
 }
 
-// Canonical + hreflang links for a page path (e.g. "" for home, "/about")
+// Tells search engines a page's main address and its English/Japanese versions (e.g. "" for home, "/about")
 export async function getAlternates(
   path: string,
 ): Promise<Metadata["alternates"]> {

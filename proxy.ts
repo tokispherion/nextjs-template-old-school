@@ -2,7 +2,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { defaultLocale, hasLocale, type Locale } from "@/lib/i18n";
 
-// helper functions - picks the best supported language from Accept-Language
+// helper functions - picks English or Japanese based on the visitor's browser language
 function getPreferredLocale(header: string | null): Locale {
   if (!header) return defaultLocale;
   const ranked = header
@@ -18,7 +18,7 @@ function getPreferredLocale(header: string | null): Locale {
   return defaultLocale;
 }
 
-// Redirects URLs without a language prefix (e.g. /about -> /ja/about)
+// Adds the language to addresses that don't have one (e.g. /about -> /ja/about)
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   if (hasLocale(pathname.split("/")[1])) return;
@@ -28,7 +28,7 @@ export function proxy(request: NextRequest) {
   return NextResponse.redirect(request.nextUrl);
 }
 
-// Skips API routes, Next.js internals and files (robots.txt, sitemap.xml, images)
+// Leaves files and behind-the-scenes requests alone (images, robots.txt, sitemap.xml, API)
 export const config = {
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

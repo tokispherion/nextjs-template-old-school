@@ -1,4 +1,4 @@
-"use client"; // Error boundaries must be Client Components
+"use client"; // Error pages must run in the browser
 
 // imports
 import { useEffect } from "react";
@@ -9,7 +9,7 @@ import { defaultLocale, errorMessages, hasLocale } from "@/lib/i18n";
 // types
 type Props = { error: unknown; retry: () => void };
 
-// Replaces the root layout when it fails - needs its own <html>/<body>, no globals.css
+// Last-resort error page if the whole site layout breaks; it builds its own bare page without site styles
 export default function GlobalError({ error, retry }: Props) {
   // custom hooks
   const params = useParams<{ lang?: string }>();

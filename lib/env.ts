@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-// Validated env vars - add new ones here and in .env.example
+// Checks the site settings in .env are filled in correctly - add new ones here and in .env.example
 const envSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.url().default("http://localhost:3000"),
 });

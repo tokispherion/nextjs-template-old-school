@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "404",
 };
 
-// Shown for URLs that match no route; the language is unknown here, so both are shown
+// Page for addresses that don't exist; the language is unknown here, so it shows both
 export default function GlobalNotFound() {
   // return
   return (
